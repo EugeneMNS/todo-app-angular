@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {TodoModel} from "./models/todo-model";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'todo-app';
+  todoItems: TodoModel[] = [
+    {title: 'Learn Angular'},
+    {title: 'Learn TypeScript'},
+  ]
+  addTodo(title: string){
+    this.todoItems.push({title});
+  }
 }

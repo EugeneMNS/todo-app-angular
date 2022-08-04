@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-todo-input',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todo-input.component.scss']
 })
 export class TodoInputComponent implements OnInit {
-
+  todoTitle: string = '';
+  @Output() todoTitleSubmit = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  submitTodo() {
+    this.todoTitleSubmit.emit(this.todoTitle);
+    this.todoTitle = '';
   }
 
 }
